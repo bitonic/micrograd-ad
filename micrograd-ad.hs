@@ -30,7 +30,7 @@ optimizeMoonClassifier gen = do
   let epochs = 150
   let batchSize = 50
   optimize
-    <$> initMoonClassifier
+    <$> initMoonClassifier gen
     <*> replicateM epochs (V.map moonDataPoint <$> makeMoons gen batchSize)
 
 main :: IO ()

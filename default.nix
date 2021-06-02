@@ -1,5 +1,5 @@
 {
-  pinnedNixpkgsCommit ? "34f85de51bbc74595e63b22ee089adbb31f7c7a2", # nixos-20.09
+  pinnedNixpkgsCommit ? "cee3ca37c68dad981396365bf4b1d0c807ac4eb4", # nixos-20.09
   pinnedNixpkgsUrl ? "https://github.com/NixOS/nixpkgs/archive/${pinnedNixpkgsCommit}.tar.gz",
   pkgs ? import (fetchTarball pinnedNixpkgsUrl) {},
 }:
@@ -25,6 +25,7 @@ in {
       matplotlib_2
       python38Packages.pandas
       python38Packages.numpy
+      ffmpeg
     ];
   };
   asymptote-shell = pkgs.mkShell {

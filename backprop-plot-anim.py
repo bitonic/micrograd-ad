@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import glob
 import numpy as np
 import os
-from matplotlib.animation import FuncAnimation
+import matplotlib.animation as animation
 
 moons = pandas.read_csv("output/test-moons.cv", sep=",", header=None).values
 X = moons[:, 0:2]
@@ -66,7 +66,8 @@ def update(epoch):
   loss_ax.set_xlabel(f"epoch: {epoch:03d}, loss: {loss:.4f}")
   return loss_line,
 
-anim = FuncAnimation(fig, update, frames=range(epochs), interval=100)
-anim.save("output/animation.mp4", dpi=200)
+anim = animation.FuncAnimation(fig, update, frames=range(epochs), interval=100)
+writer = animation.FFMpegWriter()
+anim.save("output/animation.mp4", dpi=200, writer=writer)
 # anim.save("output/animation.gif", dpi=200, savefig_kwargs={"transparent": True})
 # plt.show()
